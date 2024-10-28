@@ -1,0 +1,81 @@
+{% load static %}  <!-- Importar etiquetas estáticas -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="{% static 'login/styles.css' %}" type="text/css" media="all" />
+</head>
+
+<body>
+    <div class="w3l-signinform">
+        <!-- Contenedor principal -->
+        <div class="wrapper">
+            <!-- Contenido principal -->
+            <div class="w3l-form-info">
+                
+                <!-- Contenedor de flexbox -->
+                <div class="form-container">
+                    
+                    <!-- Imagen -->
+                    <div class="LoginGymPa">
+                        <img src="{% static 'login/images/image2.png' %}" alt="Montana Gym">
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="w3_info">
+                        <h1>¡Bienvenido de nuevo!</h1>
+                        <p class="sub-para">Accede a tu cuenta para continuar</p>
+                        <h2>Iniciar sesión</h2>
+
+                        {% if messages %}
+                            <ul>
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+
+                        <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <input type="text" name="username" placeholder="Nombre de usuario" required>
+                            </div>
+
+                            <div class="input-group two-groop">
+                                <span><i class="fa fa-key" aria-hidden="true"></i></span>
+                                <input type="password" name="password" placeholder="Contraseña" required>
+                            </div>
+
+                            <div class="form-row bottom">
+                                <div class="form-check">
+                                    <input type="checkbox" id="remember" name="remember" value="remember">
+                                    <label for="remember">Recuérdame</label>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-block" type="submit">Iniciar sesión</button>
+                        </form>
+
+
+                </div> <!-- fin form-container -->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p> 2024 -MONTANA GYM Todos los derechos reservados</p>
+        </div>
+    </div>
+</body>
+
+</html>

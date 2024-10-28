@@ -1,0 +1,92 @@
+/* Reset y estilos generales */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s;
+    z-index: 1000; /* Asegura que el sidebar esté siempre arriba */
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    display: block;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #495057;
+}
+
+/* Botón de logout */
+.logout a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background-color: #e63946;
+    border-radius: 8px;
+    margin-top: 20px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.logout a:hover {
+    background-color: #d62828;
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 250px; /* Espacio igual al ancho del sidebar */
+    padding: 20px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    transition: margin-left 0.3s;
+}
+
+/* Responsive: Sidebar colapsable en pantallas pequeñas */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    .content {
+        margin-left: 0;
+    }
+}

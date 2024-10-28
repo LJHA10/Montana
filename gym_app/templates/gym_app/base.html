@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnasio</title>
+    <link rel="stylesheet" href="{% static 'base/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Gimnasio</h2>
+        <ul>
+            <li><a href="{% url 'asistencia' %}">Asistencia</a></li>
+            <li><a href="{% url 'usuarios' %}">Usuarios</a></li>
+            <li><a href="{% url 'rutinas' %}">Rutinas</a></li>
+            <li><a href="{% url 'graficas' %}">Gráficas</a></li>
+            <li><a href="{% url 'inventario' %}">Inventario</a></li>
+        </ul>
+        <div class="logout">
+            {% comment %} <a href="{% url 'logout' %}">Cerrar sesión</a> {% endcomment %}
+        </div>
+    </div>
+
+    <main class="content">
+        <h1>Bienvenido al Gimnasio</h1>
+        <p>Aquí encontrarás todo lo que necesitas para tus entrenamientos.</p>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,192 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'welcome/styles.css' %}">
+    <title>MONTANA GYM </title>
+</head>
+<body>
+    <!-- MENU -->
+    <div class="contenedor-header">
+        <header>
+            <h1>MONTANA <span class="txtRojo">GYM</span></h1>
+            <nav id="nav">
+                <a href="#inicio" onclick="seleccionar()">inicio</a>
+                <a href="#nosotros" onclick="seleccionar()">Nosotros</a>
+                <a href="#servicios" onclick="seleccionar()">Servicios</a>
+                <a href="#galeria" onclick="seleccionar()">Galería</a>
+                <a href="#contacto" onclick="seleccionar()">Contacto</a>
+            </nav>
+            <div class="redes">
+                <a href="#"><i class="fa-solid fa-file-contract"></i></a>
+                <a href="https://www.facebook.com/profile.php?id=100090504832942&mibextid=ZbWKwL"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="{% url 'login' %}"><i class="fa-solid fa-user"></i></a>
+            </div>
+            <!-- Icono del menu responsive -->
+            <div id="icono-nav" class="nav-responsive" onclick="mostrarOcultarMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>                
+        </header>
+    </div>
+
+
+
+
+    <!-- SECCION INICIO -->
+    <section id="inicio" class="inicio">
+        <div class="contenido-seccion">
+            <div class="info">
+                <h2> MONTANA <span class="txtRojo">GYM</span></h2>
+                <p>Transorma tu cuerpo, supera tus límites</p>
+                <a href="#nosotros" class="btn-mas">
+                    <i class="fa-solid fa-circle-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION NOSOTROS -->
+    <section id="nosotros" class="nosotros">
+        <div class="fila">
+            <div class="col">
+                <img src="{% static 'welcome/images/nosotros.png' %}" alt="">
+            </div>
+            <div class="col">
+                <div class="contenedor-titulo">
+                    <div class="numero">
+                        01
+                    </div>
+                    <div class="info">
+                        <span class="frase">LA MEJOR EXPERIENCIA</span>
+                        <h2 class="titlegood">NOSOTROS</h2>
+                    </div>
+                </div>
+                <p>En MONTANA GYM , estamos comprometidos con ayudarte a alcanzar tus metas de bienestar y salud. Ofrecemos un ambiente motivador, con entrenador calificado y un enfoque personalizado. Ya sea que busques ganar fuerza, mejorar tu resistencia o bienestar general, estamos aquí para apoyarte en cada paso del camino.</p>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <!-- SECCION SERVICIOS -->
+    <section class="servicios" id="servicios">
+        <div class="contenido-seccion">
+            <div class="fila">
+                <div class="col">
+                    <div class="contenedor-titulo">
+                        <div class="numero">
+                            02
+                        </div>
+                        <div class="info">
+                            <span class="frase">LA MEJOR EXPERIENCIA</span>
+                            <h2>SERVICIOS</h2>
+                        </div>
+                    </div>
+                    <p class="p-especial">Entrenamiento Personalizado:</p>
+                    <p>Adaptamos cada rutina de ejercicio a tus necesidades y objetivos específicos, con la guía de nuestros entrenadores.</p>
+                    <p class="p-especial">Clases Grupales:</p>
+                    <p>Participa en nuestras clases grupales para diferentes niveles, desde principiantes hasta avanzados, en un ambiente motivador y divertido.</p>
+                    <p class="p-especial">Equipos de Calidad:<p>
+                    <p>Contamos con una amplia variedad de máquinas y equipos de ejercicio para que puedas entrenar de manera segura y efectiva.</p>
+                </div>
+                <div class="col">
+                    <img src="{% static 'welcome/images/servicios.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCION GALERIA -->
+    <section class="galeria" id="galeria">
+        <div class="contenido-seccion">
+            <div class="contenedor-titulo">
+                <div class="numero">
+                    04
+                </div>
+                <div class="info">
+                    <span class="frase">LA MEJOR EXPERIENCIA</span>
+                    <h2>GALERIA</h2>
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col">
+                    <img src="{% static 'welcome/images/f1.jpg' %}" alt="">
+                </div>
+                <div class="col">
+                    <img src="{% static 'welcome/images/f2.jpg' %}" alt="">
+                </div>
+                <div class="col">
+                    <img src="{% static 'welcome/images/f3.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="fila">
+                <div class="col">
+                    <img src="{% static 'welcome/images/f4.jpg' %}" alt="">
+                </div>
+                <div class="col">
+                    <img src="{% static 'welcome/images/f5.jpg' %}" alt="">
+                </div>
+                <div class="col">
+                    <img src="{% static 'welcome/images/f2.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+    <!-- SECCION CONTACTO -->
+    <section class="contacto" id="contacto">
+        <div class="contenido-seccion">
+            <div class="contenedor-titulo">
+                <div class="numero">
+                    06
+                </div>
+                <div class="info">
+                    <span class="frase">LA MEJOR EXPERIENCIA</span>
+                    <h2>CONTACTO</h2>
+                </div>
+            </div>
+            <div class="mensaje">
+                <img src="{% static 'welcome/images/servicios.png' %}" alt="">
+            </div>
+            <div class="fila-datos">
+                <div class="col">
+                    <i class="fa-solid fa-location-dot"></i>
+                    Miguel Hidalgo 945
+                    <p></p>
+                    Tercera Secc Sta Martha
+                    90460 Xaloztoc, Tlax.
+                </div>
+                <div class="col">
+                    <i class="fa-solid fa-phone"></i>
+                    (+52)81 1329 9604
+                </div>
+                <div class="col">
+                    <i class="fa-regular fa-clock"></i>
+                    Lunes a Viernes, 6:00hrs - 22:00hrs
+                    <p></p>
+                    Sabado 6:00hrs - 12:00 hrs
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="info">
+            <p>2024 -<span class="txtRojo">MONTANA GYM</span> Todos los derechos reservados</p>
+            <div class="redes">
+                <a href="https://www.facebook.com/profile.php?id=100090504832942&mibextid=ZbWKwL">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'welcome/app.js' %}"></script>
+</body>
+</html>

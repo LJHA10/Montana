@@ -1,0 +1,48 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Registro de Asistencia</h1>
+    <form method="POST" action="{% url 'asistencia' %}">
+        {% csrf_token %}
+        <label for="nombre_usuario">Nombre de Usuario:</label>
+        <input type="text" id="nombre_usuario" name="nombre_usuario" required><br>
+
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required><br>
+
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="Presente">Presente</option>
+            <option value="Ausente">Ausente</option>
+        </select><br>
+
+        <button type="submit">Registrar Asistencia</button>
+    </form>
+
+    <h2>Lista de Asistencias Registradas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre de Usuario</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for asistencia in asistencia %}
+                <tr>
+                    <td>{{ asistencia.nombre_usuario }}</td>
+                    <td>{{ asistencia.fecha }}</td>
+                    <td>{{ asistencia.estado }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay asistencias registradas</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}

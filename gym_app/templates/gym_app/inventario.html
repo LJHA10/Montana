@@ -1,0 +1,50 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Registro de Productos</h1>
+    <form method="POST" action="{% url 'registrar_producto' %}">
+        {% csrf_token %}
+        <label for="nombre_producto">Nombre del Producto:</label>
+        <input type="text" id="nombre_producto" name="nombre_producto" required><br>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required><br>
+
+        <label for="categoria">Categoría:</label>
+        <input type="text" id="categoria" name="categoria"><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" rows="3"></textarea><br>
+
+        <button type="submit">Registrar Producto</button>
+    </form>
+
+    <h2>Lista de Productos Registrados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre del Producto</th>
+                <th>Cantidad</th>
+                <th>Categoría</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in inventario %}
+                <tr>
+                    <td>{{ producto.nombre_producto }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No hay productos registrados</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock %}
