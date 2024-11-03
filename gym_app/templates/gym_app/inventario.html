@@ -4,25 +4,37 @@
 {% block content %}
 <main class="content">
     <h1>Registro de Productos</h1>
-    <form method="POST" action="{% url 'registrar_producto' %}">
+    <form method="POST" action="{% url 'registrar_producto' %}" class="product-registration-form">
         {% csrf_token %}
-        <label for="nombre_producto">Nombre del Producto:</label>
-        <input type="text" id="nombre_producto" name="nombre_producto" required><br>
+        <div class="form-group">
+            <label for="nombre_producto">Nombre del Producto:</label>
+            <input type="text" id="nombre_producto" name="nombre_producto" required placeholder="Introduce el nombre del producto">
+        </div>
 
-        <label for="cantidad">Cantidad:</label>
-        <input type="number" id="cantidad" name="cantidad" required><br>
+        <div class="form-group">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required placeholder="Introduce la cantidad">
+        </div>
 
-        <label for="categoria">Categoría:</label>
-        <input type="text" id="categoria" name="categoria"><br>
+        <div class="form-group">
+            <label for="categoria">Categoría:</label>
+            <input type="text" id="categoria" name="categoria" required placeholder="Introduce la categoría">
+        </div>
 
-        <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" rows="3"></textarea><br>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required placeholder="Introduce la descripción del producto"></textarea>
+        </div>
 
-        <button type="submit">Registrar Producto</button>
+        <button type="submit" class="btn-submit">Registrar Producto</button>
     </form>
 
+    {% for message in messages %}
+        <div class="alert alert-info">{{ message }}</div>
+    {% endfor %}
+
     <h2>Lista de Productos Registrados</h2>
-    <table>
+    <table class="product-list-table">
         <thead>
             <tr>
                 <th>Nombre del Producto</th>
@@ -47,4 +59,6 @@
         </tbody>
     </table>
 </main>
+
+<link rel="stylesheet" href="{% static 'inventario/inventario.css' %}">
 {% endblock %}

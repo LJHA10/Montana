@@ -1,5 +1,48 @@
 {% extends 'gym_app/base.html' %}
+{% load static %}
 
 {% block content %}
-<h1>Graficas</h1>
+<section class="home">
+    <div class="text">Gráficas de Asistencias</div>
+    <main class="content">
+        <div class="graphs-container">
+            <h1>Gráficas de Asistencias</h1>
+            <canvas id="attendanceChart"></canvas> <!-- Canvas para el gráfico -->
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+                // Obtenemos los datos desde Django
+                const fechas = {{ fechas|safe }};  // Datos de fechas
+                const conteoAsistencias = {{ conteo_asistencias|safe }}; // Datos de conteo
+
+                // Configuración del gráfico
+                const ctx = document.getElementById('attendanceChart').getContext('2d');
+                const attendanceChart = new Chart(ctx, {
+                    type: 'line', // Tipo de gráfico
+                    data: {
+                        labels: fechas, // Fechas en el eje x
+                        datasets: [{
+                            label: 'Número de Asistencias',
+                            data: conteoAsistencias, // Conteo de asistencias en el eje y
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderWidth: 2,
+                            fill: true // Si quieres un área debajo de la línea
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </main>
+</section>
+
+<link rel="stylesheet" href="{% static 'graficas/graficas.css' %}">
 {% endblock %}

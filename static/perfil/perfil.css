@@ -1,0 +1,71 @@
+/* Estilo para el contenedor del formulario */
+.form-container {
+    max-width: 400px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrando el formulario horizontalmente */
+    padding: 20px; /* Espaciado interno */
+    background-color: #fff; /* Fondo blanco para el formulario */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+}
+
+/* Estilos para el grupo de formularios */
+.form-group {
+    margin-bottom: 15px; /* Espaciado entre los grupos de formularios */
+}
+
+/* Estilo para etiquetas */
+label {
+    display: block; /* Etiquetas en bloque */
+    margin-bottom: 5px; /* Espaciado debajo de las etiquetas */
+    font-weight: bold; /* Etiquetas en negrita */
+}
+
+/* Estilo para entradas de texto */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye padding y border en el ancho total */
+}
+
+/* Estilo para el botón de guardar */
+.btn-save {
+    background-color: #28a745; /* Color de fondo verde */
+    color: white; /* Color de texto blanco */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    font-size: 16px; /* Tamaño de fuente */
+}
+
+/* Cambiar el color del botón al pasar el ratón */
+.btn-save:hover {
+    background-color: #218838; /* Color de fondo más oscuro */
+}
+
+/* Estilo para el enlace de volver */
+.link-back {
+    display: block; /* Mostrar como bloque */
+    margin-top: 15px; /* Espaciado superior */
+    text-align: center; /* Centrar texto */
+    color: #007bff; /* Color del enlace */
+}
+
+/* Estilo para mensajes */
+.messages {
+    list-style-type: none; /* Sin viñetas */
+    padding: 0; /* Sin padding */
+    margin-top: 15px; /* Espaciado superior */
+}
+
+.messages li {
+    background-color: #f8d7da; /* Fondo para mensajes */
+    color: #721c24; /* Color de texto para mensajes */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 4px; /* Bordes redondeados */
+    margin-bottom: 10px; /* Espaciado inferior */
+}

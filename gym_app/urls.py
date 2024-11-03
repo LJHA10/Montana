@@ -4,11 +4,13 @@ from . import views
 urlpatterns = [
     path('', views.index, name='welcome'),
     path('login/',views.login_view,name='login'),
-    path('asistencia/', views.asistencia, name='asistencia'),
+    path('logout/', views.logout_view, name='logout'),
+    path('perfil/', views.perfil_usuario, name='perfil'),
+    path('asistencia/', views.registrar_asistencia, name='asistencia'),
     path('usuarios/', views.usuarios, name='usuarios'),
-    path('rutinas/', views.rutinas, name='rutinas'),
+    path('rutinas/', views.registrar_rutina, name='rutinas'),
     path('graficas/', views.graficas, name='graficas'),
-    path('inventario/', views.inventario, name='inventario'),
+    path('inventario/', views.registrar_producto, name='inventario'),
     path('registrar_producto/', views.registrar_producto, name='registrar_producto'),  # Agrega esta lín
 ]
 

@@ -1,0 +1,32 @@
+/* Contenedor principal de las gráficas */
+.graphs-container {
+    max-width: 800px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centrado horizontal */
+    padding: 20px; /* Espaciado interno */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+}
+
+/* Estilo para el título de las gráficas */
+.graphs-container h1 {
+    text-align: center; /* Centrar el texto */
+    margin-bottom: 20px; /* Espaciado inferior */
+}
+
+/* Estilo para los gráficos */
+.graph {
+    position: relative;
+    height: 400px; /* Altura del gráfico */
+}
+
+/* Media queries para adaptabilidad */
+@media (max-width: 600px) {
+    .graphs-container {
+        padding: 10px; /* Espaciado reducido en pantallas pequeñas */
+    }
+
+    .graph {
+        height: 300px; /* Altura reducida en pantallas pequeñas */
+    }
+}
