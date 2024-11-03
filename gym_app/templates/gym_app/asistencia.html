@@ -4,25 +4,41 @@
 {% block content %}
 <main class="content">
     <h1>Registro de Asistencia</h1>
-    <form method="POST" action="{% url 'asistencia' %}">
+    
+    <!-- Sección para mostrar mensajes de éxito o error -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="{% url 'asistencia' %}" class="attendance-form">
         {% csrf_token %}
-        <label for="nombre_usuario">Nombre de Usuario:</label>
-        <input type="text" id="nombre_usuario" name="nombre_usuario" required><br>
+        <div class="form-group">
+            <label for="nombre_usuario">Nombre de Usuario:</label>
+            <input type="text" id="nombre_usuario" name="nombre_usuario" required placeholder="Introduce tu nombre">
+        </div>
 
-        <label for="fecha">Fecha:</label>
-        <input type="date" id="fecha" name="fecha" required><br>
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+        </div>
 
-        <label for="estado">Estado:</label>
-        <select id="estado" name="estado" required>
-            <option value="Presente">Presente</option>
-            <option value="Ausente">Ausente</option>
-        </select><br>
+        <div class="form-group">
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="Presente">Presente</option>
+                <option value="Ausente">Ausente</option>
+            </select>
+        </div>
 
-        <button type="submit">Registrar Asistencia</button>
+        <button type="submit" class="btn-submit">Registrar Asistencia</button>
     </form>
 
     <h2>Lista de Asistencias Registradas</h2>
-    <table>
+    <table class="attendance-table">
         <thead>
             <tr>
                 <th>Nombre de Usuario</th>
@@ -45,4 +61,6 @@
         </tbody>
     </table>
 </main>
+
+<link rel="stylesheet" href="{% static 'asistencia/asistencia.css' %}">
 {% endblock %}
