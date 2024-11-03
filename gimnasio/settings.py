@@ -77,6 +77,8 @@ TEMPLATES = [
         },
     },
 ]
+LOGIN_URL = '/login/'
+
 
 WSGI_APPLICATION = "gimnasio.wsgi.application"
 
