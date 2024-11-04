@@ -17,12 +17,12 @@
     <form method="POST" action="{% url 'asistencia' %}" class="attendance-form">
         {% csrf_token %}
         <div class="form-group">
-            <label for="nombre_usuario">Nombre de Usuario:</label>
+            <label for="nombre_usuario">Buscar Nombre de Usuario:</label>
             <input type="text" id="nombre_usuario" name="nombre_usuario" required placeholder="Introduce tu nombre">
         </div>
 
         <div class="form-group">
-            <label for="fecha">Fecha:</label>
+            <label for="fecha">Fecha y hora:</label>
             <input type="date" id="fecha" name="fecha" required>
         </div>
 

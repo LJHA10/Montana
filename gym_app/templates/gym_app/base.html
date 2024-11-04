@@ -12,9 +12,9 @@
     <!----===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
-    <title>Gimnasio</title>
+    <title>Montana GYM</title>
 </head>
-<body>
+<body class="dark">
     <nav class="sidebar close">
         <header>
             <div class="image-text">
@@ -31,10 +31,6 @@
         </header>
         <div class="menu-bar">
             <div class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Buscar...">
-                </li>
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="{% url 'asistencia' %}">
@@ -50,10 +46,11 @@
                     </li>
                     <li class="nav-link">
                         <a href="{% url 'rutinas' %}">
-                            <i class='bx bx-fitness icon'></i>
+                            <i class='bx bx-dumbbell icon'></i>
                             <span class="text nav-text">Rutinas</span>
                         </a>
                     </li>
+                    
                     <li class="nav-link">
                         <a href="{% url 'graficas' %}">
                             <i class='bx bx-chart icon'></i>
@@ -90,24 +87,13 @@
                         </a>
                     </li>
                 {% endif %}
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Modo oscuro</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
             </div>
         </div>
     </nav>
     
     <section class="home">
-        <div class="text">Bienvenido al Gimnasio</div>
+        <div class="text">Bienvenido a Montana GYM</div>
         <main class="content">
-            <p>Aquí encontrarás todo lo que necesitas para tus entrenamientos.</p>
             {% block content %}
             {% endblock %}
         </main>
@@ -129,10 +115,6 @@
             sidebar.classList.remove("close");
         });
 
-        modeSwitch.addEventListener("click", () => {
-            body.classList.toggle("dark");
-            modeText.innerText = body.classList.contains("dark") ? "Modo claro" : "Modo oscuro";
-        });
     </script>
 </body>
 </html>
