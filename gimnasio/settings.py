@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -30,7 +31,7 @@ db = firestore.client()
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-wu1argli)yip%o*$vz@xkhyys)gpda)0fh5w9=e33!v$27#wsm"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','sok3r9k#r02pr$)#nc^97+g=1pa-=(i^0za$(sks0-3xo^2r#+')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
