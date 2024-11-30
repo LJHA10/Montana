@@ -1,65 +1,200 @@
-.content {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #18191a;
+    color: #ffffff;
 }
 
-h1 {
-    color: #333;
+.content {
+    padding: 20px;
+}
+
+h1, h3 {
+    color: #de9008;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* Mensajes */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
 }
 
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-input[type="text"],
-textarea,
-input[type="number"] {
-    width: 100%;
+.messages li {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.messages li.success {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+.messages li.error {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* Contenedor principal */
+.layout-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.form-container, .list-container {
+    flex: 1;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+}
+
+/* Formulario */
+.create-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.create-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.create-form .form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.create-form .form-control {
+    padding: 10px;
+    border: 2px solid #de9008;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #070909;
+}
+
+.create-form .form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.create-form .form-check-input {
+    width: 20px;
+    height: 20px;
 }
 
 .btn-submit {
-    background-color: #28a745;
-    color: white;
+    padding: 10px;
+    background-color: #de9008;
+    color: #ffffff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s;
 }
 
 .btn-submit:hover {
-    background-color: #218838;
+    background-color: #b87306;
 }
 
-.routine-list-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+/* Lista de rutinas */
+.rutinas-list {
+    list-style-type: none;
+    padding: 0;
 }
 
-.routine-list-table th,
-.routine-list-table td {
+.rutinas-list .rutina-item {
+    margin-bottom: 15px;
     padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
+    border: 1px solid #de9008;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #070909;
 }
 
-.routine-list-table th {
-    background-color: #f2f2f2;
+.rutinas-list .rutina-item strong {
+    color: #de9008;
+}
+
+.btn-edit {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #de9008;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
     font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-edit:hover {
+    background-color: #b87306;
+}
+
+/* Barra de búsqueda */
+.search-bar-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    background-color: #1c1e1f;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.search-form input {
+    padding: 8px;
+    flex-grow: 1;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 8px;
+    background-color: #ffffff;
+    color: #070909;
+}
+
+.search-form button {
+    padding: 8px;
+    background-color: #de9008;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-form button:hover {
+    background-color: #d04e28;
+}
+
+/* Responsive layout para pantallas pequeñas */
+@media (max-width: 768px) {
+    .layout-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-container, .list-container {
+        max-width: 90%;
+    }
 }

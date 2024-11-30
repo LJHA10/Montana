@@ -3,7 +3,7 @@
 
 {% block content %}
 <main class="content">
-    <h1>Registro de Asistencia</h1>
+    <h1>Usuarios</h1>
     
     <!-- Sección para mostrar mensajes de éxito o error -->
     {% if messages %}
@@ -14,49 +14,54 @@
         </ul>
     {% endif %}
 
-    <form method="POST" action="{% url 'asistencia' %}" class="attendance-form">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="nombre_usuario">Nombre de Usuario:</label>
-            <input type="text" id="nombre_usuario" name="nombre_usuario" required placeholder="Introduce tu nombre">
-        </div>
-
-        <div class="form-group">
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required>
-        </div>
-
-        <div class="form-group">
-            <label for="estado">Estado:</label>
-            <select id="estado" name="estado" required>
-                <option value="Presente">Presente</option>
-                <option value="Ausente">Ausente</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn-submit">Registrar Asistencia</button>
+    <!-- Formulario de búsqueda -->
+    <form method="GET" action="{% url 'asistencia' %}" class="search-form">
+        <input type="text" name="search_query" placeholder="Buscar usuario por nombre" value="{{ request.GET.search_query }}">
+        <button type="submit">Buscar</button>
     </form>
 
-    <h2>Lista de Asistencias Registradas</h2>
-    <table class="attendance-table">
+    <h2>Lista de Usuarios</h2>
+    <table class="user-table">
         <thead>
             <tr>
-                <th>Nombre de Usuario</th>
-                <th>Fecha</th>
-                <th>Estado</th>
+                <th>Nombre</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>Enfermedades</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
-            {% for asistencia in asistencia %}
-                <tr>
-                    <td>{{ asistencia.nombre_usuario }}</td>
-                    <td>{{ asistencia.fecha }}</td>
-                    <td>{{ asistencia.estado }}</td>
-                </tr>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.name|default:"N/A" }}</td>
+                <td>{{ usuario.height|default:"N/A" }}</td>
+                <td>{{ usuario.weight|default:"N/A" }}</td>
+                <td>{{ usuario.diseases|default:"N/A" }}</td>
+                <td>
+                    {% if usuario.id %}
+                        <!-- Contenedor para los botones -->
+                        <div class="btn-container">
+                            <!-- Enlace para ver detalles del usuario -->
+                            <a href="{% url 'detalles_usuario' usuario.id %}" class="btn-details">Ver Detalles</a>
+                
+                            <!-- Formulario para registrar la asistencia -->
+                            <form method="POST" action="{% url 'registrar_asistencia' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="userId" value="{{ usuario.id }}"> <!-- Clave ajustada -->
+                                <input type="hidden" name="name" value="{{ usuario.name }}"> <!-- Clave ajustada -->
+                                <button type="submit" class="btn-register">Registrar Asistencia</button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <span>Sin ID</span>
+                    {% endif %}
+                </td>
+            </tr>
             {% empty %}
-                <tr>
-                    <td colspan="3">No hay asistencias registradas</td>
-                </tr>
+            <tr>
+                <td colspan="5">No hay usuarios registrados</td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>

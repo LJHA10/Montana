@@ -10,9 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore ,storage
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,10 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Inicializa la aplicación de Firebase
 cred = credentials.Certificate("firebase_credentials.json")  # Asegúrate de que la ruta sea correcta
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(cred,{
+    'storageBucket': 'corydballfa.appspot.com'
+})
 
 # Inicializa Firestore y guarda la referencia en una variable global
 db = firestore.client()
+bucket = storage.bucket()
 
 
 # Quick-start development settings - unsuitable for production
@@ -142,3 +146,5 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Carpeta donde almacenarás los archivos CSS/JS
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

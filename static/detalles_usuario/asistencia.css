@@ -1,0 +1,172 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070909;
+    color: #ffffff;
+}
+
+/* Contenedor principal */
+.content {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #333333; /* Fondo gris para el contenedor */
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Títulos */
+h1, h2 {
+    color: #de9008;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Tabla de detalles del usuario */
+.details-table {
+    margin: 0 auto;
+    width: 80%;
+    border-collapse: collapse;
+    background-color: #1e1e1e;
+    border: 2px solid #de9008;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.details-table th {
+    background-color: #de9008;
+    color: #ffffff;
+    padding: 10px;
+    text-align: left;
+}
+
+.details-table td {
+    background-color: #ffffff;
+    color: #000000;  /* Letras negras en la columna de datos */
+    padding: 10px;
+    text-align: left;
+}
+
+.details-table tr:nth-child(even) td {
+    background-color: #f0f0f0; /* Alternancia de color para filas */
+}
+
+/* Calendario */
+.calendar {
+    display: flex;
+    flex-direction: column;
+    margin: 30px auto;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid #de9008;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+    padding: 10px;
+}
+
+.week {
+    display: flex;
+    justify-content: space-between;
+}
+
+.day {
+    width: calc(100% / 7 - 5px);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;  /* Hace los días redondos */
+    margin: 2px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.day.attended {
+    background-color: #de9008; /* Naranja para días de asistencia */
+    color: #070909;
+}
+
+.day.missed {
+    background-color: #333333; /* Rojo para días de inasistencia */
+    color: #ffffff;
+}
+
+.day.empty {
+    background-color: transparent;
+}
+
+/* Estilos generales para los botones */
+.btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 30px;  /* Tamaño uniforme para todos los botones */
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Botón eliminar */
+.btn-danger {
+    background-color: #de9008; /* Naranja para eliminar */
+}
+
+.btn-danger:hover {
+    background-color: #dc3545; /* Rojo cuando se pasa el mouse */
+}
+
+/* Botón editar */
+.btn-primary {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #de9008; /* Color del gimnasio */
+    border: 2px solid #de9008; /* Borde del color del gimnasio */
+}
+
+.btn-primary:hover {
+    background-color: #de9008; /* Cambia a naranja al pasar el mouse */
+    color: #ffffff; /* Letras blancas */
+}
+
+/* Botón volver */
+.btn-details {
+    background-color: #ffffff; /* Fondo blanco */
+    color: #de9008; /* Color del gimnasio */
+    border: 2px solid #de9008; /* Borde del color del gimnasio */
+}
+
+.btn-details:hover {
+    background-color: #de9008; /* Cambia a naranja al pasar el mouse */
+    color: #ffffff; /* Letras blancas */
+}
+
+/* Iconos dentro de los botones */
+.icon {
+    font-size: 18px;  /* Tamaño de los iconos */
+}
+
+/* Asegura que todos los botones se vean con el mismo tamaño */
+.btn {
+    height: 50px; /* Altura uniforme para todos los botones */
+    min-width: 150px; /* Ancho mínimo para botones */
+    justify-content: center; /* Alinea el contenido (texto e icono) al centro */
+}
+
+
+/* Iconos */
+.icon {
+    font-size: 16px;
+    color: #070909; /* Color negro para los iconos */
+}

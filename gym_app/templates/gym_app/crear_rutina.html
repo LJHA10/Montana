@@ -1,0 +1,83 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Rutinas</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div class="layout-container">
+        <!-- Formulario a la izquierda -->
+        <div class="form-container">
+            <form method="POST" class="create-form">
+                {% csrf_token %}
+                <h1>Crear Rutinas</h1>
+                
+                <div class="form-group">
+                    <label for="rutina_nombre">Nombre de la Rutina:</label>
+                    <input type="text" id="rutina_nombre" name="rutina_nombre" required placeholder="Introduce el nombre de la rutina" class="form-control">
+                </div>
+
+                <h3>Seleccionar Ejercicios:</h3>
+                <div class="ejercicios-list">
+                    {% for ejercicio in ejercicios %}
+                        <div class="form-check">
+                            <input type="checkbox" id="ejercicio_{{ forloop.counter }}" name="ejercicios" value="{{ ejercicio.nombre_ejercicio }}" class="form-check-input">
+                            <label for="ejercicio_{{ forloop.counter }}" class="form-check-label">{{ ejercicio.nombre_ejercicio }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    <label for="repeticiones">Repeticiones:</label>
+                    <input type="number" id="repeticiones" name="repeticiones" required placeholder="Introduce el número de repeticiones" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="series">Series:</label>
+                    <input type="number" id="series" name="series" required placeholder="Introduce el número de series" class="form-control">
+                </div>
+
+                <button type="submit" class="btn-submit">Crear Rutina</button>
+            </form>
+        </div>
+
+        <!-- Lista de rutinas a la derecha -->
+        <div class="list-container">
+            <h3>Rutinas Existentes:</h3>
+
+            <!-- Barra de búsqueda -->
+            <div class="search-bar-container">
+                <form method="GET" action="{% url 'rutinas' %}" class="search-form">
+                    <input type="text" name="search" placeholder="Buscar por nombre de rutina" class="search-input" value="{{ request.GET.search }}">
+                    <button type="submit" class="btn-search">Buscar</button>
+                </form>
+            </div>
+
+            {% if rutinas %}
+                <ul class="rutinas-list">
+                    {% for rutina in rutinas %}
+                        <li class="rutina-item">
+                            <strong>{{ rutina.nombre }}</strong> - Ejercicios:
+                            {% for ejercicio in rutina.ejercicios %}
+                                <div>{{ ejercicio.nombre_ejercicio }} - Repeticiones: {{ ejercicio.repeticiones }} - Series: {{ ejercicio.series }}</div>
+                            {% endfor %}
+                            <a href="{% url 'editar_rutina' rutina.id %}" class="btn-edit">Editar Rutina</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No hay rutinas creadas aún.</p>
+            {% endif %}
+        </div>
+    </div>
+</main>
+
+<link rel="stylesheet" href="{% static 'rutinas/rutinas.css' %}">
+{% endblock %}

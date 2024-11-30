@@ -1,0 +1,70 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Detalles del Usuario: {{ usuario.name }}</h1>
+
+    <!-- Tabla de detalles del usuario -->
+    <table class="details-table">
+        <tr>
+            <th>Nombre</th>
+            <td>{{ usuario.name }}</td>
+        </tr>
+        <tr>
+            <th>Altura</th>
+            <td>{{ usuario.height }} cm</td>
+        </tr>
+        <tr>
+            <th>Peso</th>
+            <td>{{ usuario.weight }} kg</td>
+        </tr>
+        <tr>
+            <th>Enfermedades</th>
+            <td>{{ usuario.diseases }}</td>
+        </tr>
+    </table>
+
+    <!-- Asistencia del mes -->
+    <h2>Asistencia del mes: {{ current_month }}</h2>
+
+    <div class="calendar">
+        {% for week in month_days %}
+            <div class="week">
+                {% for day in week %}
+                    {% if day == 0 %}
+                        <div class="day empty"></div>
+                    {% else %}
+                        {% with day_string=day|stringformat:"d" %}
+                            <div class="day {% if current_month|add:'-'|add:day_string in fechas_asistencia %}attended{% else %}missed{% endif %}">
+                                {{ day }}
+                            </div>
+                        {% endwith %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="btn-container">
+        <form action="{% url 'eliminar_usuario' usuario_id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                <i class="icon fa fa-trash"></i> Eliminar Usuario
+            </button>
+        </form>
+        
+        <a href="{% url 'editar_usuario' usuario_id %}" class="btn btn-primary">
+            <i class="icon fa fa-pencil-alt"></i> Editar Usuario
+        </a>
+        
+        <a href="{% url 'asistencia' %}" class="btn btn-details">
+            <i class="icon fa fa-arrow-left"></i> Volver a la lista de usuarios
+        </a>
+    </div>
+</main>
+
+<!-- Estilos -->
+<link rel="stylesheet" href="{% static 'detalles_usuario/asistencia.css' %}">
+{% endblock %}

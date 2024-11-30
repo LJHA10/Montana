@@ -1,0 +1,207 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070909;
+    color: #ffffff;
+}
+
+.content {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #de9008;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Mensajes de éxito y error */
+.messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.messages li.success {
+    background-color: #198754;
+    color: #ffffff;
+}
+
+.messages li.error {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.layout-container {
+    display: flex;
+    flex-wrap: wrap; /* Asegura que los elementos se apilen en pantallas pequeñas */
+    justify-content: space-between;
+    gap: 20px; /* Espacio entre las columnas */
+}
+
+/* Formulario de registro de ejercicio */
+.exercise-registration-form {
+    flex: 1; /* Ocupa espacio proporcional dentro del contenedor */
+    max-width: 45%; /* Limita el ancho máximo */
+    background-color: #1c1e1f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.exercise-registration-form .form-group {
+    margin-bottom: 15px;
+}
+
+.exercise-registration-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.exercise-registration-form input[type="text"],
+.exercise-registration-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #de9008;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #070909;
+}
+
+.exercise-registration-form .btn-submit {
+    padding: 10px 15px;
+    background-color: #de9008;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+}
+
+.exercise-registration-form .btn-submit:hover {
+    background-color: #b87306;
+}
+
+/* Tabla de ejercicios */
+.exercise-list-container {
+    flex: 1; /* Ocupa espacio proporcional dentro del contenedor */
+    max-width: 50%; /* Limita el ancho máximo */
+    overflow-x: auto; /* Permite desplazamiento horizontal si la tabla es muy ancha */
+}
+
+.exercise-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    color: #070909;
+}
+
+.exercise-list-table thead {
+    background-color: #de9008;
+    color: #ffffff;
+}
+
+.exercise-list-table th, .exercise-list-table td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #070909;
+}
+
+.exercise-list-table tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.exercise-list-table tbody tr:nth-child(even) {
+    background-color: #e6e6e6;
+}
+
+.exercise-list-table tbody td a {
+    color: #de9008;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.exercise-list-table tbody td a:hover {
+    text-decoration: underline;
+}
+
+/* Ajuste de la barra de búsqueda */
+.search-bar-container {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Centra la barra de búsqueda */
+}
+
+.search-form {
+    display: flex;
+    width: 100%; /* Ajusta el ancho de la barra de búsqueda */
+    max-width: 600px; /* Limita el ancho máximo */
+    align-items: center;
+    background-color: #1c1e1f;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.search-form input {
+    padding: 8px;
+    flex-grow: 1;
+    font-size: 14px; /* Ajusta el tamaño de la fuente */
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-right: 8px; /* Espacio entre el input y el botón */
+    background-color: #ffffff;
+    color: #070909;
+}
+
+.search-form button {
+    padding: 8px;
+    background-color: #de9008;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.search-form button:hover {
+    background-color: #d04e28;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .layout-container {
+        flex-direction: column; /* Apila los elementos verticalmente en pantallas pequeñas */
+    }
+
+    .exercise-registration-form,
+    .exercise-list-container {
+        max-width: 100%;
+    }
+
+    .exercise-registration-form input[type="text"],
+    .exercise-registration-form textarea {
+        font-size: 14px;
+    }
+
+    .exercise-list-table th, 
+    .exercise-list-table td {
+        font-size: 14px;
+    }
+
+    .search-form {
+        width: 90%; /* Ajusta el tamaño de la barra de búsqueda en pantallas pequeñas */
+    }
+}

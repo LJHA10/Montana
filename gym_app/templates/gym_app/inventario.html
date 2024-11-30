@@ -3,61 +3,77 @@
 
 {% block content %}
 <main class="content">
-    <h1>Registro de Productos</h1>
-    <form method="POST" action="{% url 'registrar_producto' %}" class="product-registration-form">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="nombre_producto">Nombre del Producto:</label>
-            <input type="text" id="nombre_producto" name="nombre_producto" required placeholder="Introduce el nombre del producto">
+    <h1>Registro de Equipo</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="layout-container">
+        <!-- Formulario de registro -->
+        <div class="form-container">
+            <form method="POST" action="{% url 'registrar_producto' %}" class="product-registration-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre_producto">Nombre del Producto:</label>
+                    <input type="text" id="nombre_producto" name="nombre_producto" required placeholder="Introduce el nombre del producto">
+                </div>
+
+                <div class="form-group">
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" id="cantidad" name="cantidad" required placeholder="Introduce la cantidad">
+                </div>
+
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <input type="text" id="categoria" name="categoria" required placeholder="Introduce la categoría">
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required placeholder="Introduce la descripción del producto"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar Producto</button>
+            </form>
         </div>
 
-        <div class="form-group">
-            <label for="cantidad">Cantidad:</label>
-            <input type="number" id="cantidad" name="cantidad" required placeholder="Introduce la cantidad">
+        <!-- Tabla de productos registrados -->
+        <div class="table-container">
+            <h2>Lista de Productos Registrados</h2>
+            <table class="product-list-table">
+                <thead>
+                    <tr>
+                        <th>Nombre del Producto</th>
+                        <th>Cantidad</th>
+                        <th>Categoría</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in inventario %}
+                        <tr>
+                            <td>{{ producto.nombre_producto }}</td>
+                            <td>{{ producto.cantidad }}</td>
+                            <td>{{ producto.categoria }}</td>
+                            <td>{{ producto.descripcion }}</td>
+                            <td>
+                                <!-- Botón para redirigir al formulario de edición -->
+                                <a href="{% url 'editar_producto' producto.id %}" class="btn btn-edit">Editar</a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="5">No hay productos registrados</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>                
+            </table>
         </div>
-
-        <div class="form-group">
-            <label for="categoria">Categoría:</label>
-            <input type="text" id="categoria" name="categoria" required placeholder="Introduce la categoría">
-        </div>
-
-        <div class="form-group">
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required placeholder="Introduce la descripción del producto"></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">Registrar Producto</button>
-    </form>
-
-    {% for message in messages %}
-        <div class="alert alert-info">{{ message }}</div>
-    {% endfor %}
-
-    <h2>Lista de Productos Registrados</h2>
-    <table class="product-list-table">
-        <thead>
-            <tr>
-                <th>Nombre del Producto</th>
-                <th>Cantidad</th>
-                <th>Categoría</th>
-                <th>Descripción</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for producto in inventario %}
-                <tr>
-                    <td>{{ producto.nombre_producto }}</td>
-                    <td>{{ producto.cantidad }}</td>
-                    <td>{{ producto.categoria }}</td>
-                    <td>{{ producto.descripcion }}</td>
-                </tr>
-            {% empty %}
-                <tr>
-                    <td colspan="4">No hay productos registrados</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    </div>
 </main>
 
 <link rel="stylesheet" href="{% static 'inventario/inventario.css' %}">

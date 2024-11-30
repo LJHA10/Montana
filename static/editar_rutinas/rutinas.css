@@ -1,0 +1,154 @@
+/* Estilos generales */
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0f1216;
+    color: #ffffff;
+}
+
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #1b1f24;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #ffa726;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Mensajes */
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.messages li {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.messages li.success {
+    background-color: #28a745;
+    color: #ffffff;
+}
+
+.messages li.error {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #ffa726;
+}
+
+.form-control {
+    padding: 10px;
+    border: 1px solid #ffa726;
+    border-radius: 5px;
+    background-color: #2a2d32;
+    color: #ffffff;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #ff9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.5);
+}
+
+/* Botones */
+/* Botones */
+button, .btn-back {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 5px; /* Agregado para crear separación entre botones */
+}
+
+button.btn-submit {
+    background-color: #ffa726;
+    color: #ffffff;
+}
+
+button.btn-submit:hover {
+    background-color: #fb8c00;
+}
+
+button.btn-danger {
+    background-color: #e53935;
+    color: #ffffff;
+}
+
+button.btn-danger:hover {
+    background-color: #c62828;
+}
+
+a.btn-back {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ffa726;
+    color: #ffffff;
+    text-align: center;
+    margin: 5px; /* Agregado para igualar espaciado */
+}
+
+a.btn-back:hover {
+    background-color: #fb8c00;
+}
+
+/* Checkboxes */
+.form-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-check-input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.form-check-label {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

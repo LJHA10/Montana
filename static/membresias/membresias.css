@@ -1,0 +1,98 @@
+/* Contenedor principal para la página */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Asegura que el contenido se apile de arriba hacia abajo */
+    height: 100vh; /* Para que ocupe toda la pantalla */
+    background-color: #222; /* Fondo oscuro para un estilo de gimnasio */
+    color: #fff; /* Color de texto blanco para resaltar */
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo del título "Membresías" */
+h1 {
+    font-size: 3rem;
+    color: #ff6f00; /* Naranja brillante */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* Contenedor para el mensaje de "Próximamente" */
+.coming-soon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Para que todo esté en una columna */
+    height: 60vh;
+    background-color: #222; /* Fondo oscuro */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin-top: 20px; /* Espacio entre el título y el contenedor */
+}
+
+.coming-soon h2 {
+    font-size: 2rem;
+    color: #ff6f00; /* Naranja brillante */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.coming-soon p {
+    font-size: 1.5rem;
+    color: #ccc; /* Gris claro para los textos */
+    margin: 10px 0;
+}
+
+/* Contenedor de la animación */
+.animation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+}
+
+.circle {
+    width: 25px;
+    height: 25px;
+    margin: 0 7px;
+    background-color: #ff6f00; /* Naranja vibrante */
+    border-radius: 50%;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+.circle:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.circle:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+/* Ajuste de fuentes para dispositivos móviles */
+@media (max-width: 600px) {
+    .coming-soon h2 {
+        font-size: 2rem;
+    }
+
+    .coming-soon p {
+        font-size: 1.2rem;
+    }
+
+    .circle {
+        width: 20px;
+        height: 20px;
+    }
+}

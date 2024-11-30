@@ -1,0 +1,61 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Editar Rutina</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" class="edit-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="rutina_nombre">Nombre de la Rutina:</label>
+            <input type="text" id="rutina_nombre" name="rutina_nombre" required 
+                   value="{{ rutina.nombre }}" placeholder="Introduce el nombre de la rutina" class="form-control">
+        </div>
+
+        <h3>Seleccionar Ejercicios:</h3>
+        <div class="ejercicios-list">
+            {% for ejercicio in ejercicios_disponibles %}
+                <div class="form-check">
+                    <input type="checkbox" id="ejercicio_{{ forloop.counter }}" name="ejercicios" 
+                           value="{{ ejercicio.nombre_ejercicio }}" class="form-check-input"
+                           {% if ejercicio.nombre_ejercicio in nombres_ejercicios_rutina %}checked{% endif %}>
+                    <label for="ejercicio_{{ forloop.counter }}" class="form-check-label">{{ ejercicio.nombre_ejercicio }}</label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label for="repeticiones">Repeticiones:</label>
+            <input type="number" id="repeticiones" name="repeticiones" required 
+                   value="{{ ejercicios_rutina.0.repeticiones }}" placeholder="Introduce el número de repeticiones" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="series">Series:</label>
+            <input type="number" id="series" name="series" required 
+                   value="{{ ejercicios_rutina.0.series }}" placeholder="Introduce el número de series" class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-submit">Guardar Cambios</button>
+    </form>
+
+    <!-- Formulario para eliminar la rutina -->
+    <form method="POST" action="{% url 'eliminar_rutina' rutina_id %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas eliminar esta rutina?');">Eliminar Rutina</button>
+    </form>
+
+    <a href="{% url 'rutinas' %}" class="btn btn-back">Volver a la lista de rutinas</a>
+</main>
+
+<link rel="stylesheet" href="{% static 'editar_rutinas/rutinas.css' %}">
+{% endblock %}

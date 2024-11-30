@@ -1,0 +1,59 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Editar Producto</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Formulario para editar el producto -->
+    <form method="POST" action="{% url 'editar_producto' producto.id %}" class="exercise-registration-form">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nombre_producto">Nombre del Producto:</label>
+            <input type="text" id="nombre_producto" name="nombre_producto" 
+                   value="{{ producto.nombre_producto }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" 
+                   value="{{ producto.cantidad }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="categoria">Categoría:</label>
+            <input type="text" id="categoria" name="categoria" 
+                   value="{{ producto.categoria }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required>{{ producto.descripcion }}</textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Guardar Cambios</button>
+    </form>
+
+    <!-- Formulario para eliminar el producto -->
+    <form method="POST" action="{% url 'eliminar_producto' producto.id %}" class="exercise-registration-form">
+        {% csrf_token %}
+        <button type="submit" class="btn-submit" style="background-color: #e74c3c;" 
+                onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
+            Eliminar Producto
+        </button>
+    </form>
+
+    <a href="{% url 'registrar_producto' %}" class="btn-cancel">Cancelar</a>
+
+</main>
+
+<link rel="stylesheet" href="{% static 'inventario/detalles.css' %}">
+{% endblock %}

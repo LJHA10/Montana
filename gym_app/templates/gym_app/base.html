@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!----======== CSS ======== -->
+    <!-- ======== CSS ======== -->
     <link rel="stylesheet" href="{% static 'base/styles.css' %}">
     
-    <!----===== Boxicons CSS ===== -->
+    <!-- ===== Boxicons CSS ===== -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
     <title>Gimnasio</title>
 </head>
-<body>
-    <nav class="sidebar close">
+<body class="dark">
+    <nav class="sidebar">
         <header>
             <div class="image-text">
                 <span class="image">
@@ -23,18 +26,14 @@
                     <!--<img src="logo.png" alt="">-->
                 </span>
                 <div class="text logo-text">
-                    <span class="name">Gimnasio</span>
-                    <span class="profession">Bienvenido</span>
+                    <span class="name">Bienvenido</span>
+                    <span class="profession">......</span>
                 </div>
             </div>
-            <i class='bx bx-chevron-right toggle'></i>
+            <i class=''></i>
         </header>
         <div class="menu-bar">
             <div class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Buscar...">
-                </li>
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a href="{% url 'asistencia' %}">
@@ -43,14 +42,14 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a href="{% url 'usuarios' %}">
-                            <i class='bx bx-user icon'></i>
-                            <span class="text nav-text">Usuarios</span>
+                        <a href="{% url 'ejercicios' %}">
+                            <i class='bx bx-run icon'></i> <!-- Ícono de persona corriendo -->
+                            <span class="text nav-text">Ejercicios</span>
                         </a>
                     </li>
                     <li class="nav-link">
                         <a href="{% url 'rutinas' %}">
-                            <i class='bx bx-fitness icon'></i>
+                            <i class='bx bx-dumbbell icon'></i> <!-- Cambio el ícono a una pesa -->
                             <span class="text nav-text">Rutinas</span>
                         </a>
                     </li>
@@ -64,6 +63,12 @@
                         <a href="{% url 'inventario' %}">
                             <i class='bx bx-box icon'></i>
                             <span class="text nav-text">Inventario</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="{% url 'membresias' %}">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">Membresías</span>
                         </a>
                     </li>
                 </ul>
@@ -90,24 +95,13 @@
                         </a>
                     </li>
                 {% endif %}
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Modo oscuro</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
             </div>
         </div>
     </nav>
     
     <section class="home">
-        <div class="text">Bienvenido al Gimnasio</div>
+        <div class="text">Bienvenido a Montana GYM</div>
         <main class="content">
-            <p>Aquí encontrarás todo lo que necesitas para tus entrenamientos.</p>
             {% block content %}
             {% endblock %}
         </main>
@@ -116,10 +110,7 @@
     <script>
         const body = document.querySelector('body'),
               sidebar = body.querySelector('nav'),
-              toggle = body.querySelector(".toggle"),
-              searchBtn = body.querySelector(".search-box"),
-              modeSwitch = body.querySelector(".toggle-switch"),
-              modeText = body.querySelector(".mode-text");
+              searchBtn = body.querySelector(".search-box");
 
         toggle.addEventListener("click", () => {
             sidebar.classList.toggle("close");
@@ -127,11 +118,6 @@
 
         searchBtn.addEventListener("click", () => {
             sidebar.classList.remove("close");
-        });
-
-        modeSwitch.addEventListener("click", () => {
-            body.classList.toggle("dark");
-            modeText.innerText = body.classList.contains("dark") ? "Modo claro" : "Modo oscuro";
         });
     </script>
 </body>

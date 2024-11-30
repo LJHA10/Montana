@@ -1,74 +1,132 @@
-.content {
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #070909;
+    color: #ffffff;
 }
 
-h1 {
-    color: #333;
+.content {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #de9008;
+    text-align: center;
     margin-bottom: 20px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+/* Contenedor principal */
+.layout-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
 }
 
-label {
-    display: block;
+.form-container, .table-container {
+    flex: 1;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+}
+
+/* Formulario de registro */
+.product-registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-registration-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-registration-form label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="number"],
-textarea {
-    width: 100%;
+.product-registration-form input[type="text"],
+.product-registration-form input[type="number"],
+.product-registration-form textarea {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    border: 2px solid #de9008;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #070909;
 }
 
-.btn-submit {
-    background-color: #28a745;
-    color: white;
+.product-registration-form button {
+    padding: 10px;
+    background-color: #de9008;
+    color: #ffffff;
     border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-.btn-submit:hover {
-    background-color: #218838;
+.product-registration-form button:hover {
+    background-color: #b87306;
 }
 
-.alert {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #d1ecf1;
-    color: #0c5460;
-    border: 1px solid #bee5eb;
-    border-radius: 4px;
-}
-
+/* Tabla de productos */
 .product-list-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.product-list-table th,
-.product-list-table td {
+.product-list-table thead {
+    background-color: #de9008;
+    color: #ffffff;
+}
+
+.product-list-table th, .product-list-table td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ffffff;
     text-align: left;
 }
 
-.product-list-table th {
-    background-color: #f2f2f2;
+.product-list-table tbody tr:nth-child(even) {
+    background-color: #292929;
+}
+
+.product-list-table tbody tr:nth-child(odd) {
+    background-color: #1e1e1e;
+}
+
+/* Estilos del botón de editar */
+.btn-edit {
+    padding: 8px 16px;
+    background-color: #de9008; /* Color azul brillante */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
+    text-decoration: none; /* Evita que se vea subrayado */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-edit:hover {
+    background-color: #ffffff; /* Azul más oscuro al pasar el ratón */
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el ratón */
+}
+
+/* Alertas */
+.alert {
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.alert-info {
+    background-color: #de9008;
+    color: #070909;
 }

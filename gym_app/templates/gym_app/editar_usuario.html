@@ -1,0 +1,27 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Editar Usuario: {{ usuario.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Nombre:</label>
+        <input type="text" name="name" id="name" value="{{ usuario.name }}" required>
+
+        <label for="height">Altura (cm):</label>
+        <input type="number" name="height" id="height" value="{{ usuario.height }}" required>
+
+        <label for="weight">Peso (kg):</label>
+        <input type="number" name="weight" id="weight" value="{{ usuario.weight }}" required>
+
+        <label for="diseases">Enfermedades:</label>
+        <input type="text" name="diseases" id="diseases" value="{{ usuario.diseases }}">
+
+        <button type="submit" class="btn btn-success">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'detalles_usuario' usuario_id %}" class="btn-cancelar">Cancelar</a>
+</main>
+
+<link rel="stylesheet" href="{% static 'editar_usuario/styles.css' %}">
+{% endblock %}

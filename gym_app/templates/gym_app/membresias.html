@@ -1,0 +1,23 @@
+{% extends 'gym_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Membresías</h1>
+    
+    <div class="coming-soon-container">
+        <div class="coming-soon">
+            <h2>¡Próximamente!</h2>
+            <p>Estamos trabajando en algo increíble para tu entrenamiento.</p>
+            <div class="animation-container">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+            <p>¡Mantente listo para la mejor experiencia de gimnasio!</p>
+        </div>
+    </div>
+</main>
+
+<link rel="stylesheet" href="{% static 'membresias/membresias.css' %}">
+{% endblock %}

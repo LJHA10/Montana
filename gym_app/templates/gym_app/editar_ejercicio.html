@@ -1,0 +1,37 @@
+{% extends 'gym_app/base.html' %} 
+{% load static %}
+
+{% block content %}
+<main class="content">
+    <h1>Editar Ejercicio</h1>
+    <div class="layout-container">
+        <!-- Formulario de edición de ejercicio -->
+        <form method="POST" class="exercise-edit-form">
+            {% csrf_token %}
+            <h2>Editar Ejercicio</h2>
+            
+            <label for="nombre_ejercicio">Nombre:</label>
+            <input type="text" id="nombre_ejercicio" name="nombre_ejercicio" value="{{ ejercicio.nombre_ejercicio }}" required>
+            
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required>{{ ejercicio.descripcion }}</textarea>
+            
+            <label for="consejos">Consejos:</label>
+            <textarea id="consejos" name="consejos">{{ ejercicio.consejos }}</textarea><br>
+
+            <button type="submit" class="update-btn">Actualizar ejercicio</button>
+        </form>
+
+        <!-- Formulario de eliminación separado -->
+        <form method="POST" action="{% url 'eliminar_ejercicio' ejercicio.id %}" class="exercise-edit-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn" onclick="return confirm('¿Estás seguro de que deseas eliminar este ejercicio?')">Eliminar ejercicio</button>
+        </form>
+
+        <!-- Enlace para volver a la lista de ejercicios -->
+        <a href="{% url 'ejercicios' %}" class="back-btn">Volver a la lista de ejercicios</a>
+    </div>
+</main>
+
+<link rel="stylesheet" href="{% static 'editar_ejercicio/editar_ejercicio.css' %}">
+{% endblock %}

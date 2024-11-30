@@ -2,47 +2,45 @@
 {% load static %}
 
 {% block content %}
-<section class="home">
-    <div class="text">Gráficas de Asistencias</div>
-    <main class="content">
-        <div class="graphs-container">
-            <h1>Gráficas de Asistencias</h1>
-            <canvas id="attendanceChart"></canvas> <!-- Canvas para el gráfico -->
-
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script>
-                // Obtenemos los datos desde Django
-                const fechas = {{ fechas|safe }};  // Datos de fechas
-                const conteoAsistencias = {{ conteo_asistencias|safe }}; // Datos de conteo
-
-                // Configuración del gráfico
-                const ctx = document.getElementById('attendanceChart').getContext('2d');
-                const attendanceChart = new Chart(ctx, {
-                    type: 'line', // Tipo de gráfico
-                    data: {
-                        labels: fechas, // Fechas en el eje x
-                        datasets: [{
-                            label: 'Número de Asistencias',
-                            data: conteoAsistencias, // Conteo de asistencias en el eje y
-                            borderColor: 'rgba(75, 192, 192, 1)',
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderWidth: 2,
-                            fill: true // Si quieres un área debajo de la línea
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        scales: {
-                            y: {
-                                beginAtZero: true
-                            }
-                        }
-                    }
-                });
-            </script>
+<main class="content">
+    <div class="container">
+        <h1 class="mt-5">Dashboard de Gráficas</h1>
+        
+        <div class="row mt-4">
+            <div class="col-md-8">
+                <h4>Gráfico de Rutinas por Día</h4>
+                <canvas id="myChart" width="400" height="200"></canvas>
+            </div>
         </div>
-    </main>
-</section>
+    </div>
+</main>
 
-<link rel="stylesheet" href="{% static 'graficas/graficas.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Aquí pasamos las variables fechas y cantidades directamente desde Django
+    var fechas = {{ fechas|safe }};
+    var cantidades = {{ cantidades|safe }};
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',  // Cambia el tipo de gráfico si lo deseas ('line', 'pie', etc.)
+        data: {
+            labels: fechas,  // Etiquetas (fechas)
+            datasets: [{
+                label: 'Rutinas por Día',
+                data: cantidades,  // Los valores para cada etiqueta (número de rutinas por día)
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 {% endblock %}
